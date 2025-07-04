@@ -17,7 +17,7 @@
   <h1>영상 학습</h1>
 
   <div id="video-container">
-    <video id="player" autoplay loop controls></video>
+    <video id="player" autoplay loop controls muted></video>
   </div>
 
   <div id="controls">
@@ -29,10 +29,7 @@
   <div id="answer"></div>
 
   <script>
-    // GitHub raw URL 설정: <username>, <repo>, <branch>를 실제 값으로 교체하세요
-    const baseURL = 'https://raw.githubusercontent.com/<username>/<repo>/<branch>/';
-
-    // 영상 파일 목록: 파일명만 기입 (확장자 포함)
+    // GitHub 에 업로드된 MP4 파일 목록
     const videoFiles = [
       'OO틀.mp4',
       'VIP.mp4',
@@ -40,7 +37,7 @@
       '텔레그램.mp4'
     ];
 
-    // 배열 섞기 (Fisher-Yates)
+    // Fisher-Yates Shuffle for random order
     function shuffle(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -59,8 +56,7 @@
     const showAnswerBtn = document.getElementById('showAnswerBtn');
 
     function loadVideo(i) {
-      const file = shuffled[i];
-      player.src = baseURL + file;
+      player.src = shuffled[i];
       answerDiv.style.display = 'none';
       showAnswerBtn.textContent = '정답 보기';
     }
@@ -87,7 +83,7 @@
       }
     });
 
-    // 초기 실행
+    // 초기 영상 불러오기
     loadVideo(idx);
   </script>
 </body>
