@@ -58,7 +58,7 @@
     function loadVideo(i) {
       player.src = shuffled[i];
       answerDiv.style.display = 'none';
-      showAnswerBtn.textContent = '정답 보기 (w)';
+      showAnswerBtn.textContent = '정답 보기';
     }
 
     prevBtn.addEventListener('click', () => {
@@ -79,7 +79,7 @@
         showAnswerBtn.textContent = '정답 숨기기 (w)';
       } else {
         answerDiv.style.display = 'none';
-        showAnswerBtn.textContent = '정답 보기 (w)';
+        showAnswerBtn.textContent = '정답 보기';
       }
     });
 
