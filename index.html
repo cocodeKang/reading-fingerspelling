@@ -21,9 +21,9 @@
   </div>
 
   <div id="controls">
-    <button id="prevBtn">이전</button>
-    <button id="showAnswerBtn">정답 보기</button>
-    <button id="nextBtn">다음</button>
+    <button id="prevBtn">이전 (q)</button>
+    <button id="showAnswerBtn">정답 보기 (w)</button>
+    <button id="nextBtn">다음 (r)</button>
   </div>
 
   <div id="answer"></div>
@@ -58,7 +58,7 @@
     function loadVideo(i) {
       player.src = shuffled[i];
       answerDiv.style.display = 'none';
-      showAnswerBtn.textContent = '정답 보기';
+      showAnswerBtn.textContent = '정답 보기 (w)';
     }
 
     prevBtn.addEventListener('click', () => {
@@ -76,10 +76,20 @@
         const answer = shuffled[idx].replace(/\.mp4$/i, '');
         answerDiv.textContent = `정답: ${answer}`;
         answerDiv.style.display = 'block';
-        showAnswerBtn.textContent = '정답 숨기기';
+        showAnswerBtn.textContent = '정답 숨기기 (w)';
       } else {
         answerDiv.style.display = 'none';
-        showAnswerBtn.textContent = '정답 보기';
+        showAnswerBtn.textContent = '정답 보기 (w)';
+      }
+    });
+
+    // Keyboard shortcuts: q=이전, w=정답 토글, r=다음
+    document.addEventListener('keydown', (e) => {
+      if (e.target.tagName.toLowerCase() === 'input' || e.target.tagName.toLowerCase() === 'textarea') return;
+      switch (e.key.toLowerCase()) {
+        case 'q': prevBtn.click(); break;
+        case 'w': showAnswerBtn.click(); break;
+        case 'r': nextBtn.click(); break;
       }
     });
 
